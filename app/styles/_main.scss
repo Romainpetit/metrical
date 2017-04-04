@@ -1,0 +1,267 @@
+$icon-font-path: '../fonts/';
+
+// bower:scss
+// @import "bower_components/bootstrap-sass/assets/stylesheets/_bootstrap.scss";
+// endbower
+
+body {
+  margin: 0;
+  padding: 0;
+  background: $base-background-color;
+  color: $copy-color;
+  font-family: $font-family-serif;
+  font-size: $base-font-size;
+  @include base(line-height, 1);
+  font-weight: $font-weight-book;
+  overflow-x: hidden;
+
+  // Better text legibility
+  text-rendering: optimizeLegibility;
+  -moz-text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  -ms-text-size-adjust: none;
+
+  // Better Font Rendering
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+}
+
+body {
+  @include base(padding-top, 1);
+  @include base(padding-bottom, 1);
+
+  &.ghost {
+    * {
+      background-color: rgba(91, 146, 191, 0.05);
+    }
+  }
+}
+
+.layout {
+    position: relative;
+
+    @include queries($xs) {
+        background-image: url('http://basehold.it/i/24/66a8d8');
+    }
+
+    @include queries($sm) {
+        background-image: url('http://basehold.it/i/27/66a8d8');
+    }
+
+    @include queries($md) {
+        background-image: url('http://basehold.it/i/33/66a8d8');
+    }
+
+    @include queries($lg) {
+        background-image: url('http://basehold.it/i/36/66a8d8');
+    }
+
+    @include queries($xl) {
+        background-image: url('http://basehold.it/i/39/66a8d8');
+    }
+
+    @include queries($xxl) {
+        background-image: url('http://basehold.it/i/42/66a8d8');
+    }
+}
+
+.adminPanel {
+  position: fixed;
+  font-size: .75rem;
+  line-height: 1rem;
+  background-color: $white-color;
+  outline: 2px solid #66a8d8;
+  font-family: $font-family-sans-serif;
+  @include base(right, 1);
+  @include base(bottom, 1);
+  @include base(padding, 1);
+
+  .currentLevel {
+      &:before {
+        text-transform: uppercase;
+      }
+
+      @include queries($xs) {
+        &:before {
+          content: "xs";
+        }
+      }
+
+      @include queries($sm) {
+        &:before {
+          content: "sm";
+        }
+      }
+
+      @include queries($md) {
+        &:before {
+          content: "md";
+        }
+      }
+
+      @include queries($lg) {
+        &:before {
+          content: "lg";
+        }
+      }
+
+      @include queries($xl) {
+        &:before {
+          content: "xl";
+        }
+      }
+
+      @include queries($xxl) {
+        &:before {
+          content: "xxl";
+        }
+      }
+  }
+
+  .currentFontSize {
+      &:before {
+        text-transform: uppercase;
+      }
+
+      @include queries($xs) {
+        &:before {
+          content: "#{$font-xs}";
+        }
+      }
+
+      @include queries($sm) {
+        &:before {
+          content: "#{$font-sm}";
+        }
+      }
+
+      @include queries($md) {
+        &:before {
+          content: "#{$font-md}";
+        }
+      }
+
+      @include queries($lg) {
+        &:before {
+          content: "#{$font-lg}";
+        }
+      }
+
+      @include queries($xl) {
+        &:before {
+          content: "#{$font-xl}";
+        }
+      }
+
+      @include queries($xxl) {
+        &:before {
+          content: "#{$font-xxl}";
+        }
+      }
+  }
+
+  .currentLineHeight {
+      &:before {
+        text-transform: uppercase;
+      }
+
+      @include queries($xs) {
+        &:before {
+          content: "#{$line-height-xs}";
+        }
+      }
+
+      @include queries($sm) {
+        &:before {
+          content: "#{$line-height-sm}";
+        }
+      }
+
+      @include queries($md) {
+        &:before {
+          content: "#{$line-height-md}";
+        }
+      }
+
+      @include queries($lg) {
+        &:before {
+          content: "#{$line-height-lg}";
+        }
+      }
+
+      @include queries($xl) {
+        &:before {
+          content: "#{$line-height-xl}";
+        }
+      }
+
+      @include queries($xxl) {
+        &:before {
+          content: "#{$line-height-xxl}";
+        }
+      }
+  }
+}
+
+#layout.off {
+    background-image: none !important;
+}
+
+// Styling of common elements
+
+hr {
+  width: 100%;
+  border: 0;
+  position: relative;
+  display: block;
+  @include base(height, 1);
+  @include base(margin-top, 1);
+  @include base(margin-bottom, 1);
+
+  &:before {
+    position: absolute;
+    content: "";
+    top: 50%;
+    top: calc(50% - 1px);
+    width: 100%;
+    height: 1px;
+    background-color: rgba($black-color, .5);
+  }
+}
+
+p, ul {
+  @include base(margin-top, 1);
+  @include base(margin-bottom, 1);
+}
+
+.btn {
+  @include base(padding, .5);
+  @include base(border-radius, .25);
+  border: 1px solid $copy-color;
+  text-decoration: none;
+  color: $copy-color;
+  font-family: $font-family-sans-serif;
+}
+
+/* Everything but the jumbotron gets side spacing for mobile first views */
+.header,
+.marketing,
+.footer {
+  @include base(margin-top, 1);
+  @include base(margin-bottom, 1);
+}
+
+
+/* Custom page footer */
+.footer {
+  @include base(padding-top, 2);
+}
+
+/* Main marketing message and sign up button */
+.jumbotron {
+  text-align: center;
+  .btn {
+    font-size: $base-font-size;
+  }
+}

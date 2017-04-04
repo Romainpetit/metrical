@@ -1,0 +1,66 @@
+// Base font size factor for each responsive level.
+$font-xs: 16px;
+$line-height-xs: 24px;
+
+$font-sm: 18px;
+$line-height-sm: 27px;
+
+$font-md: 20px;
+$line-height-md: 33px;
+
+$font-lg: 22px;
+$line-height-lg: 36px;
+
+$font-xl: 24px;
+$line-height-xl: 39px;
+
+$font-xxl: 26px;
+$line-height-xxl: 42px;
+
+$font-selector: ':root' !default;
+
+// END
+
+$fonts: (
+    #{$xs}:#{$font-xs},
+    #{$sm}:#{$font-sm},
+    #{$md}:#{$font-md},
+    #{$lg}:#{$font-lg},
+    #{$xl}:#{$font-xl},
+    #{$xxl}:#{$font-xxl}) !default;
+
+$line-heights: (
+    #{$xs}:#{$line-height-xs},
+    #{$sm}:#{$line-height-sm},
+    #{$md}:#{$line-height-md},
+    #{$lg}:#{$line-height-lg},
+    #{$xl}:#{$line-height-xl},
+    #{$xxl}:#{$line-height-xxl}) !default;
+
+@mixin fonts($selector: $font-selector, $queries: $queries) {
+    @each $size in $sizes {
+        $query: map-get($fonts, $size);
+        $base: map-get($line-heights, $size);
+
+        @include queries($size, $queries) {
+            #{$selector} {
+                line-height: #{$base};
+                font-size: #{$query};
+            }
+        }
+    }
+}
+
+@include fonts();
+
+@mixin base($property, $multiplier, $queries: $queries) {
+    @each $size in $sizes {
+        $base: map-get($line-heights, $size);
+
+        @include queries($size, $queries) {
+            $total: ($multiplier * $base);
+            #{$property}: $total;
+            // @return $value;
+        }
+    }
+}

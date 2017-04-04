@@ -1,0 +1,46 @@
+// Breakpoints definitions in em. Unit added afterwards for easier calculations
+$width-xs: 0 !default;   // Starting value
+$width-sm: 336 !default;  // 336px
+$width-md: 540 !default;  // 528px
+$width-lg: 720 !default;  // 800px
+$width-xl: 1072 !default;  // 1072px
+$width-xxl: 1408 !default; // 1408px
+
+// Viewport width breakpoint, with unit
+$viewport-xs: #{$width-xs}px !default;
+$viewport-sm: #{$width-sm}px !default;
+$viewport-md: #{$width-md}px !default;
+$viewport-lg: #{$width-lg}px !default;
+$viewport-xl: #{$width-xl}px !default;
+$viewport-xxl: #{$width-xxl}px !default;
+
+$default-query: $viewport-xs !default;
+
+// Breakpoints namespace
+$xs: 'xs' !default;
+$sm: 'sm' !default;
+$md: 'md' !default;
+$lg: 'lg' !default;
+$xl: 'xl' !default;
+$xxl: 'xxl' !default;
+
+$sizes: $xs $sm $md $lg $xl $xxl !default;
+
+$queries: (
+    #{$xs}:#{$viewport-xs},
+    #{$sm}:#{$viewport-sm},
+    #{$md}:#{$viewport-md},
+    #{$lg}:#{$viewport-lg},
+    #{$xl}:#{$viewport-xl},
+    #{$xxl}:#{$viewport-xxl}) !default;
+
+@mixin queries($key, $queries: $queries) {
+    $query: map-get($queries, $key);
+    @if ($query == $default-query) {
+        @content;
+    } @else {
+        @media screen and (min-width: #{$query}) {
+            @content;
+        }
+    }
+}
