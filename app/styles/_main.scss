@@ -38,7 +38,7 @@ body {
   }
 }
 
-.layout {
+.layout.grid {
     position: relative;
 
     @include queries($xs) {
@@ -203,6 +203,12 @@ body {
       }
   }
 }
+
+.ghost .adminPanel,
+.ghost .adminPanel * {
+  background-color: $white-color;
+}
+
 
 #layout.off {
     background-image: none !important;
