@@ -69,13 +69,14 @@ body {
 .adminPanel {
   position: fixed;
   font-size: .75rem;
-  line-height: 1rem;
+  line-height: 1.1rem;
   background-color: $white-color;
   outline: 2px solid #66a8d8;
   font-family: $font-family-sans-serif;
-  @include base(right, 1);
-  @include base(bottom, 1);
-  @include base(padding, 1);
+  z-index: 1;
+  @include base(right, .5);
+  @include base(bottom, .5);
+  @include base(padding, .5);
 
   .currentLevel {
       &:before {
@@ -250,7 +251,7 @@ p, ul {
   font-family: $font-family-sans-serif;
 }
 
-/* Everything but the jumbotron gets side spacing for mobile first views */
+/* Everything in the page gets base vertical spacing */
 .header,
 .marketing,
 .footer {
